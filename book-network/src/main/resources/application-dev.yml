@@ -1,0 +1,33 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:5452/book_network
+        username: username
+        password: P#1zxcvbnm,./
+        driver-class-name: org.postgresql.Driver
+    
+    jpa: 
+        hibernate:
+            ddl-auto: update
+        show-sql: false
+        properties:
+            hibernate:
+                format_sql: true
+            datasource: postgresql
+            database-platform: org.hibernate.dialect.PostgreSLDialect
+
+    mail:
+        host: localhost
+        port: 1025
+        username: pavan
+        password: pavan
+        properties:
+            mail:
+                smtp:
+                    trust: "*"
+                auth: true
+                starttls:
+                    enable: true
+                connectiontimeout: 5000
+                timeout: 3000
+                writetimeout: 5000
+                
