@@ -18,12 +18,11 @@ import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class JwtService {
 
-	@Value("${application.security.jwt.secret-key}")
+	//@Value("${application.security.jwt.secret-key}")
 	private String secretKey;
-	@Value("${application.security.jwt.expairation}")
+	//@Value("${application.security.jwt.expiration}")
 	private long jwtExpiration;
 
 	public String extractUsername(String token) {

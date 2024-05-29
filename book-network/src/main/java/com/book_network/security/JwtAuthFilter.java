@@ -1,15 +1,15 @@
 package com.book_network.security;
 
-import java.io.IOException;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
-import static org.springframework.http.HttpHeaders.*;
+import java.io.IOException;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import jakarta.servlet.FilterChain;
@@ -19,7 +19,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 
-@Service
+@Component
 @RequiredArgsConstructor
 public class JwtAuthFilter extends OncePerRequestFilter {
 
@@ -36,15 +36,15 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 	) throws ServletException, IOException 
 	{
 		
-		final String authHeader = request.getHeader(AUTHORIZATION);
-		final String jwt;
-		final String userEmail;
-		
 		if (request.getServletPath().contains("/api/v1/auth")) 
 		{
 			filterChain.doFilter(request, response);
 			return;
 		}
+		final String authHeader = request.getHeader(AUTHORIZATION);
+		final String jwt;
+		final String userEmail;
+		
 		
 		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
 			filterChain.doFilter(request, response);

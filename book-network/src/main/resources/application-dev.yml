@@ -1,37 +1,41 @@
 spring:
-    datasource:
-        url: jdbc:postgresql://localhost:5452/book_network
-        username: username
-        password: P#1zxcvbnm,./
-        driver-class-name: org.postgresql.Driver
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_network
+    username: postgres
+    password: pavan
+    driver-class-name: org.postgresql.Driver
     
-    jpa: 
-        hibernate:
-            ddl-auto: update
-        show-sql: false
-        properties:
-            hibernate:
-                format_sql: true
-            datasource: postgresql
-            database-platform: org.hibernate.dialect.PostgreSLDialect
-
-    mail:
-        host: localhost
-        port: 1025
-        username: pavan
-        password: pavan
-        properties:
-            mail:
-                smtp:
-                    trust: "*"
-                auth: true
-                starttls:
-                    enable: true
-                connectiontimeout: 5000
-                timeout: 3000
-                writetimeout: 5000
-    application:
-        security:
-            jwt:
-               secret-key: 07400325FC37E13BC9CFE527A421A0E8C5640EA9309785A3147369060635A23A
-               expairation: 86400          
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: localhost
+    port: 1025
+    username: ali
+    password: ali
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  application:
+    security:
+      jwt:
+        secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+        expairation: 86400000
+    mailing:
+      frontend:
+        activation-url: http://localhost:4200/activate-account 
+server:
+  port: 8088
