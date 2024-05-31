@@ -16,6 +16,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.book_network.book.Book;
+import com.book_network.history.BookTransactionHistory;
 import com.book_network.role.Role;
 
 import jakarta.persistence.Column;
@@ -25,6 +27,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -44,7 +47,7 @@ import lombok.experimental.SuperBuilder;
 public class User implements UserDetails, Principal {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
     private String firstName;
     private String lastName;
@@ -54,12 +57,15 @@ public class User implements UserDetails, Principal {
     private String password;
     private boolean accountLocked;
     private boolean enabled;
+    
     @ManyToMany(fetch = EAGER)
     private List<Role> roles;
-//    @OneToMany(mappedBy = "owner")
-//    private List<Book> books;
-//    @OneToMany(mappedBy = "user")
-//    private List<BookTransactionHistory> histories;
+    
+    @OneToMany(mappedBy = "owner")
+    private List<Book> books;
+  
+    @OneToMany(mappedBy = "user")
+	 private List<BookTransactionHistory> histories;
 
     @CreatedDate
     @Column(nullable = false, updatable = false)

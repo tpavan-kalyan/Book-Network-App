@@ -23,7 +23,7 @@ import lombok.Setter;
 @Entity
 public class Token {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     @Column(unique = true)
