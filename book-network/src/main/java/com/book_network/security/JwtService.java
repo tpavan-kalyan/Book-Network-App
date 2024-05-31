@@ -39,7 +39,7 @@ public class JwtService {
 	public String generateToken(UserDetails userDetails) {
 		return generateToken(new HashMap<>(), userDetails);
 	}
-	private String generateToken(Map<String, Object> tokenMap, UserDetails userDetails) {
+	public String generateToken(Map<String, Object> tokenMap, UserDetails userDetails) {
 		return buildToken(tokenMap, userDetails, jwtExpiration);
 	}
 	private String buildToken(Map<String, Object> tokenMap, UserDetails userDetails, long jwtExpiration) {

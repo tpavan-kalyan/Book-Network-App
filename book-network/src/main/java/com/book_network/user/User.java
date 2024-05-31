@@ -107,10 +107,6 @@ public class User implements UserDetails, Principal {
         return enabled;
     }
 
-    public String fullName() {
-        return getFirstName() + " " + getLastName();
-    }
-
     @Override
     public String getName() {
         return email;
