@@ -18,8 +18,10 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 @RequiredArgsConstructor
 public class EmailService {
 	
@@ -41,7 +43,7 @@ public class EmailService {
 		String templateName;
 		
 		if (emailTemplate == null) {
-			templateName = "confirm -emal";
+			templateName = "confirm-emal";
 		}else {
 			templateName = emailTemplate.name();
 		}

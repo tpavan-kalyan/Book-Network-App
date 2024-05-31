@@ -29,7 +29,7 @@ public class AuthenticationService {
 	private final TokenRepository tokenRepository;
 	private final EmailService emailService;
 	
-	//@Value("${application.mailing.frontend.activation-url}")
+	@Value("${application.mailing.frontend.activation-url}")
 	private String activationUrl;
 	
 	public void register(RegistrationRequest request) throws MessagingException {
@@ -59,8 +59,8 @@ public class AuthenticationService {
 		
 		emailService.sendEmail(
 					user.getEmail(),
-					user.fullName(),
-					EmailTemplateName.ACCTIVATE_ACCOUNT,
+					user.getFullName(),
+					EmailTemplateName.ACTIVATE_ACCOUNT,
 					activationUrl,
 					newToken,
 					"Account Activation"

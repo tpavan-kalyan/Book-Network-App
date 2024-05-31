@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/book_network
-    username: postgres
-    password: pavan
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/book_network
+    username: root
+    password: P#1zxcvbnm,./
+    driver-class-name: com.mysql.cj.jdbc.Driver
     
   jpa:
     hibernate:
@@ -12,8 +12,15 @@ spring:
     properties:
       hibernate:
         format_sql: true
-    database: postgresql
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    cache: false
+    
   mail:
     host: localhost
     port: 1025
@@ -29,13 +36,13 @@ spring:
         connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
-  application:
-    security:
-      jwt:
-        secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-        expairation: 86400000
-    mailing:
-      frontend:
-        activation-url: http://localhost:4200/activate-account 
+application:
+  security:
+    jwt:
+      secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+      expiration: 86400000
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account 
 server:
   port: 8088

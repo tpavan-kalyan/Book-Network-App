@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 @Tag(name = "Authentication")
 public class AuthenticationContoller {
@@ -32,6 +32,5 @@ public class AuthenticationContoller {
         return ResponseEntity.accepted().build();
         
     }
-    
-    
+   
 }
