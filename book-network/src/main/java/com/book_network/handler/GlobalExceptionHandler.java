@@ -98,7 +98,7 @@ public class GlobalExceptionHandler {
 				.status(BAD_REQUEST)
 				.body(
 						ExceptionResponse.builder()
-						.validatationErrors(errors)
+						.validationErrors(errors)
 						.build()
 						
 						);

@@ -22,7 +22,7 @@ public class ExceptionResponse {
 	private Integer businessErrorCode;
 	private String businessErrornDescription;
 	private String error;
-	private Set<String> validatationErrors;
+	private Set<String> validationErrors;
 	private Map<String, String> errors;
 	
 }

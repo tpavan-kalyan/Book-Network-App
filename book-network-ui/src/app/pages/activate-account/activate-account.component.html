@@ -1,0 +1,14 @@
+<div class="container" *ngIf="submitted else codeForm">
+
+</div>
+
+<ng-template #codeForm>
+
+    <div class="container">
+        <div style="width: 400px;" class="text-center">
+            <h2>Type your activation code</h2>
+            <code-input></code-input>
+        </div>
+    </div>
+
+</ng-template>

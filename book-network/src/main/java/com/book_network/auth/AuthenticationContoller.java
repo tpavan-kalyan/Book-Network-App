@@ -36,7 +36,7 @@ public class AuthenticationContoller {
     }
     
     @PostMapping("/authenticate")
-    public ResponseEntity<AuthenticationResponse> autheneticate(
+    public ResponseEntity<AuthenticationResponse> authenticate(
     			@RequestBody @Valid AuthenticationRequest request
     		) {
 		return ResponseEntity.ok(service.authenticate(request));

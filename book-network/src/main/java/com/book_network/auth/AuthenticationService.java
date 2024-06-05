@@ -22,7 +22,6 @@ import com.book_network.user.User;
 import com.book_network.user.UserRepository;
 
 import jakarta.mail.MessagingException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
