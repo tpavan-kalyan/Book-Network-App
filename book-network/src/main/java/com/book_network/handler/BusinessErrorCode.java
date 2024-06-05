@@ -1,4 +1,4 @@
-package com.book_network.exceptions;
+package com.book_network.handler;
 
 import static org.springframework.http.HttpStatus.*;
 

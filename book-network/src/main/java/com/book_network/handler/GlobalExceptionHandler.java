@@ -1,8 +1,8 @@
-package com.book_network.exceptions;
+package com.book_network.handler;
 
-import static com.book_network.exceptions.BusinessErrorCode.ACCOUNT_DISABLED;
-import static com.book_network.exceptions.BusinessErrorCode.ACCOUNT_lOCKED;
-import static com.book_network.exceptions.BusinessErrorCode.BAD_CREDENTIALS;
+import static com.book_network.handler.BusinessErrorCode.ACCOUNT_DISABLED;
+import static com.book_network.handler.BusinessErrorCode.ACCOUNT_lOCKED;
+import static com.book_network.handler.BusinessErrorCode.BAD_CREDENTIALS;
 import static org.springframework.http.HttpStatus.*;
 
 import java.util.HashSet;
@@ -16,6 +16,8 @@ import org.springframework.security.authentication.LockedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.book_network.exception.OperationNotPermittedException;
 
 import jakarta.mail.MessagingException;
 
@@ -118,8 +120,19 @@ public class GlobalExceptionHandler {
 						.build()
 						
 						);
-		
-		
+	}
+	
+	@ExceptionHandler(OperationNotPermittedException.class)
+	public ResponseEntity<ExceptionResponse> handleException(OperationNotPermittedException exception){
+		return ResponseEntity
+				.status(BAD_REQUEST)
+				.body(
+						ExceptionResponse
+						.builder()
+						.error(exception.getMessage())
+						.build()
+						
+						);	
 	}
 	
 }

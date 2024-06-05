@@ -1,4 +1,4 @@
-package com.book_network.exceptions;
+package com.book_network.handler;
 
 import java.util.Map;
 import java.util.Set;
