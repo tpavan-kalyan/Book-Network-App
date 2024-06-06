@@ -8,6 +8,30 @@ import { AuthenticationService } from 'src/app/services/services';
   styleUrls: ['./activate-account.component.scss']
 })
 export class ActivateAccountComponent {
+  
+  redirectToLogin() {
+    this.router.navigate(['login']);
+  }
+
+  onCodeCompleted(token: string) {
+    this.confirmAccount(token);
+  }
+  private confirmAccount(token: string) {
+    this.authService.confirm({
+      token
+    }).subscribe({
+      next: () => {
+        this.message = "Your account has been successfully activated. \n Now you can proceed to login";
+        this.submitted = true;
+        this.isOkay = true;
+      },
+      error: () => {
+        this.message = "Token has been expired or invalid";
+        this.submitted = true;
+        this.isOkay = false;
+      }
+    });
+  }
   message: string = '';
   isOkay: boolean = true;
   submitted: boolean = false;
@@ -15,5 +39,5 @@ export class ActivateAccountComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService
-  ){}
+  ) { }
 }
