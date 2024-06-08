@@ -49,3 +49,8 @@ application:
       photos-output-path: ./uploads
 server:
   port: 8088
+  
+logging:
+  level:
+    root: INFO
+    com.book_network: INFO  # Adjust the package name as needed

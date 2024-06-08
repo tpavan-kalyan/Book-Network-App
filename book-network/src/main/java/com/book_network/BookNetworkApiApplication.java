@@ -10,6 +10,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import com.book_network.role.Role;
 import com.book_network.role.RoleRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
 @SpringBootApplication
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
 @EnableAsync

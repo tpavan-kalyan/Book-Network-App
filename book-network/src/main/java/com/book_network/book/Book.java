@@ -8,8 +8,6 @@ import com.book_network.history.BookTransactionHistory;
 import com.book_network.user.User;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -26,11 +24,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Book extends BaseEntity{
-	
-	@Id
-	@GeneratedValue
-	private Integer id;
+public class Book extends BaseEntity {
+
 	private String title;
 	private String authorName;
 	private String isbn;
@@ -38,29 +33,29 @@ public class Book extends BaseEntity{
 	private String bookCover;
 	private boolean archived;
 	private boolean shareable;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "owne_id")
 	private User owner;
-	
-	 @OneToMany(mappedBy = "book")
-	 private List<Feedback> feedBacks;
-	 
-	 @OneToMany(mappedBy = "book")
-	 private List<BookTransactionHistory> histories;
-	 
-	 @Transient
-	 public double getRate() {
-		 if (feedBacks == null || feedBacks.isEmpty()){
-			 return 0.0;
+
+	@OneToMany(mappedBy = "book")
+	private List<Feedback> feedBacks;
+
+	@OneToMany(mappedBy = "book")
+	private List<BookTransactionHistory> histories;
+
+	@Transient
+	public double getRate() {
+		if (feedBacks == null || feedBacks.isEmpty()) {
+			return 0.0;
 		}
-		 
-		 var rate = this.feedBacks.stream()
-				 		.mapToDouble(Feedback::getNote)
-				 		.average()
-				 		.orElse(0.0);
-		 //3.25 -->3.0 || 3.65--> 4.0
-		 double roundedRate = Math.round(rate * 10.0) / 10.0;
-		 return roundedRate;
-	 }
+
+		var rate = this.feedBacks.stream()
+				.mapToDouble(Feedback::getNote)
+				.average()
+				.orElse(0.0);
+		// 3.25 -->3.0 || 3.65--> 4.0
+		double roundedRate = Math.round(rate * 10.0) / 10.0;
+		return roundedRate;
+	}
 }

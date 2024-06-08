@@ -7,18 +7,19 @@ import com.book_network.history.BookTransactionHistory;
 
 @Service
 public class BookMapper {
+	
 
 	public Book toBook(BookRequest request) {
-		// TODO Auto-generated method stub
-		return Book.builder()
-				.id(request.id())
-				.title(request.title())
-				.authorName(request.authorName())
-				.synopsis(request.synopsis())
-				.archived(false)
-				.shareable(request.shareable())
-				.build();
-	}
+        return Book.builder()
+					.id(request.id())
+					.title(request.title())
+					.isbn(request.isbn())
+					.authorName(request.authorName())
+					.synopsis(request.synopsis())
+					.archived(false)
+					.shareable(request.shareable())
+					.build();
+    }
 	
 	public BookResponse toBookResponse(Book book) {
 		return BookResponse

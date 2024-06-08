@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.book_network.common.PageResponse;
@@ -25,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class BookService {
 	
 	private final BookRepository bookRepository;
@@ -38,7 +40,6 @@ public class BookService {
 		User user = ((User) connectedUser.getPrincipal());
 		Book book = bookMapper.toBook(request);
 		book.setOwner(user);
-		
 		return bookRepository.save(book).getId();
 	}
 	

@@ -21,12 +21,12 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/books")
+@RequestMapping("books")
 @RequiredArgsConstructor
 @Tag(name = "Book")
 public class BookController {
 
-	private final BookService service;
+    private final BookService service;
 	
 	@PostMapping
 	public ResponseEntity<Integer> saveBook(
