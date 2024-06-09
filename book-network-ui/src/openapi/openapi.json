@@ -114,7 +114,8 @@
                 "$ref": "#/components/schemas/BookRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {
@@ -627,6 +628,38 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      }
+    },
+    "/books/remove/{book-id}": {
+      "delete": {
+        "tags": [
+          "Book"
+        ],
+        "operationId": "deleteBook",
+        "parameters": [
+          {
+            "name": "book-id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int32"
+                }
+              }
+            }
           }
         }
       }
