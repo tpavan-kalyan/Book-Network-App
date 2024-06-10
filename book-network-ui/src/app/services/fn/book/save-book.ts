@@ -9,10 +9,10 @@ import { RequestBuilder } from '../../request-builder';
 import { BookRequest } from '../../models/book-request';
 
 export interface SaveBook$Params {
-      body?: BookRequest
+      body: BookRequest
 }
 
-export function saveBook(http: HttpClient, rootUrl: string, params?: SaveBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
+export function saveBook(http: HttpClient, rootUrl: string, params: SaveBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
   const rb = new RequestBuilder(rootUrl, saveBook.PATH, 'post');
   if (params) {
     rb.body(params.body, 'application/json');

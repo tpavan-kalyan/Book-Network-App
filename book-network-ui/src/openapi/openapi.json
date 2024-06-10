@@ -114,7 +114,8 @@
                 "$ref": "#/components/schemas/BookRequest"
               }
             }
-          }
+          },
+          "required": true
         },
         "responses": {
           "200": {

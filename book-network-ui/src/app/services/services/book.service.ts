@@ -77,7 +77,7 @@ export class BookService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  saveBook$Response(params?: SaveBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
+  saveBook$Response(params: SaveBook$Params, context?: HttpContext): Observable<StrictHttpResponse<number>> {
     return saveBook(this.http, this.rootUrl, params, context);
   }
 
@@ -87,7 +87,7 @@ export class BookService extends BaseService {
    *
    * This method sends `application/json` and handles request body of type `application/json`.
    */
-  saveBook(params?: SaveBook$Params, context?: HttpContext): Observable<number> {
+  saveBook(params: SaveBook$Params, context?: HttpContext): Observable<number> {
     return this.saveBook$Response(params, context).pipe(
       map((r: StrictHttpResponse<number>): number => r.body)
     );
