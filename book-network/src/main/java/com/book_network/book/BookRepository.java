@@ -12,7 +12,7 @@ public interface BookRepository extends JpaRepository<Book, Integer>, JpaSpecifi
 			FROM Book book
 			WHERE book.archived = false
 			AND book.shareable = true
-			AND book.owner.id != :userId
+			OR book.owner.id != :userId
 			
 			""")
 	Page<Book> findAllDiaplayableBooks(Pageable pageable, Integer userId);

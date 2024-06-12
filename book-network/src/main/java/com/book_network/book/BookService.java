@@ -49,10 +49,6 @@ public class BookService {
 				.orElseThrow(() -> new EntityNotFoundException("Noo bokk found with the Id:: "+bookId ));
 	}
 	
-	public void name() {
-		
-	}
-
 	public PageResponse<BookResponse> findAllBooks(int page, int size, Authentication connectedUser) {
 		User user = ((User) connectedUser.getPrincipal());
 		
@@ -85,12 +81,12 @@ public class BookService {
 		
 		return new PageResponse<>(
 				bookResponse,
-				books. getNumber(),
+				books.getNumber(),
 				books.getSize(),
-				books. getTotalElements(),
+				books.getTotalElements(),
 				books.getTotalPages(),
-				books. isFirst(),
-				books. isLast()
+				books.isFirst(),
+				books.isLast()
 				);
 	}
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { BookResponse, PageResponseBookResponse } from 'src/app/services/models';
+import { PageResponseBookResponse } from 'src/app/services/models';
 import { BookService } from 'src/app/services/services';
 
 @Component({
@@ -9,11 +9,9 @@ import { BookService } from 'src/app/services/services';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit{
-
   bookResponse: PageResponseBookResponse = {};
-
   page = 0;
-  size = 5;
+  size = 2;
 
   constructor(
     private bookService: BookService,
@@ -21,9 +19,10 @@ export class BookListComponent implements OnInit{
   ){}
 
   ngOnInit(): void {
-   this.findAllBooks();
+    this.findAllBooks();
   }
-  findAllBooks() {
+  
+  private findAllBooks() {
     this.bookService.findAllBooks({
       page: this.page,
       size: this.size
@@ -33,6 +32,4 @@ export class BookListComponent implements OnInit{
       }
     });
   }
-
-  
 }
